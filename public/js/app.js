@@ -55,10 +55,11 @@
     div.className = 'welcome-msg';
     div.innerHTML = `
       <span class="deco">🌸</span>
-      <h2>欢迎来到开悟聊天室</h2>
+      <h2>开悟聊天室</h2>
       <p>
-        我是这里的引导者。无论你此刻是好奇、困惑，<br>
-        还是心里有事想说一说——这里就是一个安全的空间。
+        我是小悟。我知道你可能只是好奇点进来看看。<br>
+        没关系。你想聊什么都可以——心里烦的、想不通的、<br>
+        或者就想试试那个三步自觉是什么感觉。你开口就行。
       </p>
       <div class="steps-preview">
         <span class="step-1-highlight">① 手放左心</span>
