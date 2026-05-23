@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>开悟聊天室 · 三步自觉</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;700&display=swap" rel="stylesheet">
+  <meta name="description" content="开悟聊天室 - 通过语音对话，体验三步自觉，感受内在宁静">
+</head>
+<body>
+  <div id="app">
+    <!-- 背景粒子 -->
+    <div id="particles"></div>
+
+    <!-- 顶部 -->
+    <header id="header">
+      <div class="header-content">
+        <h1 class="logo">☸ 开悟聊天室</h1>
+        <div class="header-actions">
+          <button id="btnSettings" class="icon-btn" title="设置" aria-label="设置">
+            <svg viewBox="0 0 24 24" width="22" height="22"><path d="M19.14 12.94c.04-.3.06-.61.06-.94 0-.32-.02-.64-.07-.94l2.03-1.58a.49.49 0 00.12-.61l-1.92-3.32a.49.49 0 00-.59-.22l-2.39.96c-.5-.38-1.03-.7-1.62-.94l-.36-2.54a.48.48 0 00-.48-.41h-3.84c-.24 0-.43.17-.47.41l-.36 2.54c-.59.24-1.13.57-1.62.94l-2.39-.96a.49.49 0 00-.59.22L2.74 8.87c-.12.21-.08.47.12.61l2.03 1.58c-.05.3-.07.62-.07.94s.02.64.07.94l-2.03 1.58a.49.49 0 00-.12.61l1.92 3.32c.12.22.37.29.59.22l2.39-.96c.5.38 1.03.7 1.62.94l.36 2.54c.05.24.24.41.48.41h3.84c.24 0 .44-.17.47-.41l.36-2.54c.59-.24 1.13-.56 1.62-.94l2.39.96c.22.08.47 0 .59-.22l1.92-3.32c.12-.22.07-.47-.12-.61l-2.01-1.58zM12 15.6A3.6 3.6 0 1115.6 12 3.61 3.61 0 0112 15.6z" fill="currentColor"/></svg>
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <!-- 主聊天区 -->
+    <main id="chat-container">
+      <div id="messages"></div>
+      <div id="scroll-anchor"></div>
+    </main>
+
+    <!-- 输入区 -->
+    <footer id="input-area">
+      <div class="input-wrapper">
+        <button id="btnVoice" class="icon-btn voice-btn" title="语音输入" aria-label="语音输入">
+          <svg viewBox="0 0 24 24" width="24" height="24"><path d="M12 14a3 3 0 003-3V5a3 3 0 00-6 0v6a3 3 0 003 3zm5-3a5 5 0 01-10 0H5a7 7 0 0014 0h-2zm-4 9.93V22h-2v-1.07A8.001 8.001 0 014 13h2a6 6 0 0012 0h2a8.001 8.001 0 01-7 7.93z" fill="currentColor"/></svg>
+        </button>
+        <textarea id="inputMsg" rows="1" placeholder="说点什么，或点击麦克风语音输入..." aria-label="输入消息"></textarea>
+        <button id="btnSend" class="icon-btn send-btn" title="发送" aria-label="发送">
+          <svg viewBox="0 0 24 24" width="24" height="24"><path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z" fill="currentColor"/></svg>
+        </button>
+      </div>
+      <div class="voice-status" id="voiceStatus" hidden>
+        <div class="voice-wave"><span></span><span></span><span></span><span></span><span></span></div>
+        <span id="voiceStatusText">正在聆听...</span>
+      </div>
+    </footer>
+
+    <!-- 三步自觉浮窗 -->
+    <div id="stepsOverlay" class="overlay" hidden>
+      <div class="overlay-content steps-panel">
+        <button class="overlay-close" id="closeSteps">&times;</button>
+        <h2>🌸 三步自觉引导</h2>
+        <div class="step-list">
+          <div class="step-item" data-step="1">
+            <div class="step-num">1</div>
+            <div class="step-info">
+              <h3>手放左心</h3>
+              <p>右手放在左胸心脏位置，在心里说：<br><em>"我发自内心地想要得到真正的宁静。"</em></p>
+            </div>
+          </div>
+          <div class="step-arrow">↓</div>
+          <div class="step-item" data-step="2">
+            <div class="step-num">2</div>
+            <div class="step-info">
+              <h3>手放前额</h3>
+              <p>右手放在前额，完全宽恕自己和他人：<br><em>"我宽恕所有人，我也宽恕我自己。"</em></p>
+            </div>
+          </div>
+          <div class="step-arrow">↓</div>
+          <div class="step-item" data-step="3">
+            <div class="step-num">3</div>
+            <div class="step-info">
+              <h3>手放顶轮</h3>
+              <p>右手放在头顶，向上推一推：<br><em>"请让我感受到顶轮之上的清凉。"</em></p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 设置面板 -->
+    <div id="settingsOverlay" class="overlay" hidden>
+      <div class="overlay-content settings-panel">
+        <button class="overlay-close" id="closeSettings">&times;</button>
+        <h2>⚙️ 设置</h2>
+        <div class="setting-group">
+          <label>
+            <span>语音朗读</span>
+            <div class="toggle-wrapper">
+              <input type="checkbox" id="toggleTTS" checked>
+              <span class="toggle-slider"></span>
+            </div>
+          </label>
+        </div>
+        <div class="setting-group">
+          <label>
+            <span>语音输入</span>
+            <div class="toggle-wrapper">
+              <input type="checkbox" id="toggleSTT" checked>
+              <span class="toggle-slider"></span>
+            </div>
+          </label>
+        </div>
+        <div class="setting-group">
+          <label for="voiceSelect">朗读声音</label>
+          <select id="voiceSelect"></select>
+        </div>
+        <div class="setting-group">
+          <label for="langSelect">输入语言</label>
+          <select id="langSelect">
+            <option value="zh-CN">中文（普通话）</option>
+            <option value="en-US">English</option>
+            <option value="yue-HK">粵語（香港）</option>
+            <option value="ja-JP">日本語</option>
+            <option value="ko-KR">한국어</option>
+            <option value="fr-FR">Français</option>
+            <option value="de-DE">Deutsch</option>
+            <option value="es-ES">Español</option>
+          </select>
+        </div>
+        <button id="btnResetChat" class="danger-btn">重置对话</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="js/app.js"></script>
+</body>
+</html>
