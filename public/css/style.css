@@ -391,9 +391,13 @@ html, body {
   background: rgba(0, 0, 0, 0.6);
   backdrop-filter: blur(8px);
   z-index: 100;
-  display: flex;
+  display: none;
   align-items: center;
   justify-content: center;
+}
+
+.overlay:not([hidden]) {
+  display: flex;
   animation: fadeIn 0.25s ease-out;
 }
 
